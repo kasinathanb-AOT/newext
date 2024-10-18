@@ -1,163 +1,136 @@
-.react-app-container {
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  padding: 0px;
+  margin: 0;
+}
+
+/* scrollbar.css */
+
+/* Apply to any container that requires a custom scrollbar */
+.custom-scrollbar {
+  overflow-y: auto;
+  /* Ensure scrollable content */
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the scrollbar track */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: lightgreen;
+  /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #26425A;
+  /* Darker color when hovering */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  /* Makes scrollbar thin */
+  scrollbar-color: #66A8CF #f1f1f1;
+  /* Thumb color and track color */
+}
+
+.react-ext-container {
+  animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  /* Smoother easing */
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  bottom: 20px;
-  box-shadow: 0 8px 16px #0000001a;
+  border-radius: 12px;
+  /* Slightly larger radius for a modern feel */
+  bottom: -100%;
+  /* Start completely hidden */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Softer shadow */
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 60vh;
   overflow: auto;
-  padding: 20px;
   position: fixed;
   right: 20px;
-  width: 30vw;
+  width: 40vw;
   z-index: 1000000;
-  transform: translateY(100%);
-  animation: slideUp 0.5s ease-in-out forwards;
+  transform: scale(0.95);
+  /* Start slightly scaled down */
+  opacity: 0;
+  /* Start invisible */
 }
 
 @keyframes slideUp {
   0% {
-    transform: translateY(100%);
+    bottom: -50%;
+    transform: scale(0.95);
+    /* Slightly smaller scale for a smooth transition */
+    opacity: 0;
+  }
+
+  60% {
+    bottom: 3%;
+    transform: scale(1.02);
+    /* Slight overshoot for a natural effect */
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(20px);
+    bottom: 2%;
+    transform: scale(1);
+    /* Return to normal size */
+    opacity: 1;
   }
-}
-
-/* Animation class to trigger the slide up effect */
-.popup-header {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.close-icon {
-  font-size: 20px;
-  font-weight: 600;
-  position: absolute;
-  right: 20px;
-  top: 10px;
-}
-
-@media (max-width:600px) {
-  .react-app-container {
-    border-radius: 0;
-    bottom: 0;
-    height: 300px;
-    padding: 16px;
-    right: 0;
-    width: 100%
-  }
-
-  .initButton {
-    padding: 10px 20px;
-    right: 5%
-  }
-}
-
-@media (min-width:601px) and (max-width:1024px) {
-  .react-app-container {
-    height: 350px;
-    right: 20px;
-    width: 400px
-  }
-
-  .initButton {
-    padding: 10px 18px;
-    right: 20px
-  }
-}
-
-.popup-container {
-  background-color: #fff;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .initButton {
-  background-color: #4caf50;
-  border: none;
-  border-radius: 6px;
-  bottom: 40px;
-  box-shadow: 0 4px 8px #0000001a;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 10px 20px;
   position: fixed;
   right: 40px;
-  transition: background-color .3s ease, box-shadow .3s ease
-}
-
-.initButton:hover {
-  background-color: #45a049;
-  box-shadow: 0 6px 12px #00000026
-}
-
-@media (max-width:600px) {
-  .initButton {
-    bottom: 10px;
-    font-size: 14px;
-    padding: 12px 24px;
-    right: 10px
-  }
-}
-
-.task-list {
-  list-style-type: none;
-  padding: 0
-}
-
-.task-item {
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px
-}
-
-.remove-task-button {
-  background-color: #e74c3c;
-  border: none;
-  border-radius: 4px;
+  bottom: 40px;
+  background-color: #4CAF50;
   color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 5px 10px
+  flex-grow: 1;
 }
 
-.remove-task-button:hover {
-  background-color: #c0392b
+.success {
+  color: green;
 }
 
-.add-task-form {
-  display: flex;
-  margin-bottom: 20px
-}
-
-.task-input {
+/* Styling for inputs */
+.myextInput {
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1 1;
-  margin-right: 10px;
-  padding: 8px
+  border-radius: 5px;
+  background: white;
+  flex-grow: 1;
+  width: 100%;
 }
 
-.add-task-button {
-  background-color: #4caf50;
-  border: none;
-  border-radius: 4px;
+/* Button styling */
+.myextBtn {
+  background-color: #4CAF50;
   color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 8px 12px
-}
-
-.add-task-button:hover {
-  background-color: #45a049
+  flex-grow: 1;
 }

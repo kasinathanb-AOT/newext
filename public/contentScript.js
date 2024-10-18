@@ -1,35 +1,52 @@
 // Inject the React app CSS when the page loads
 const reactAppCSS = document.createElement("link");
 reactAppCSS.rel = "stylesheet";
-reactAppCSS.href = chrome.runtime.getURL("static/css/main.6e59a139.css");
+reactAppCSS.href = chrome.runtime.getURL("static/css/main.css");
 document.head.appendChild(reactAppCSS);
 
 // Create the button element
+const mainDiv = document.getElementById("root");
 const injectButton = document.createElement("button");
-injectButton.innerText = "Open React App";
 injectButton.id = "openReactApp";
 injectButton.className = "initButton";
 
-document.body.appendChild(injectButton);
+// Create the image element and append it inside the button
+const buttonImage = document.createElement("img");
+buttonImage.src = chrome.runtime.getURL("./media/logo512.png");
+buttonImage.alt = "Logo";
+buttonImage.style.width = "32px";
+buttonImage.style.height = "32px";
+injectButton.appendChild(buttonImage);
 
+// Append the button inside the root element
+mainDiv.appendChild(injectButton);
+
+// Event listener for button clicks
 injectButton.addEventListener("click", () => {
     if (!document.getElementById("react-chrome-extension")) {
         const appDiv = document.createElement("div");
         appDiv.id = "react-chrome-extension";
-        appDiv.className = "react-app-container";
+        appDiv.classList = "react-ext-container custom-scrollbar";
         document.body.appendChild(appDiv);
-        const reactAppScript = document.createElement("script");
-        reactAppScript.src = chrome.runtime.getURL("static/js/main.c8f7ad07.js");
-        document.body.appendChild(reactAppScript);
+
+        // Inject the React app script only if it hasn't been added already
+        if (!document.getElementById("react-app-script")) {
+            const reactAppScript = document.createElement("script");
+            reactAppScript.id = "react-app-script";
+            reactAppScript.src = chrome.runtime.getURL("static/js/main.js");
+            document.body.appendChild(reactAppScript);
+        }
     }
 });
 
-// Listener for the button click
+// Global event listener for clicks, logging button clicks and image clicks
 document.addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON') {
+    // Check if the button or its child image was clicked
+    const target = event.target.closest('button, img');
+    if (target && (target.id === 'openReactApp' || target.tagName === 'IMG')) {
         const buttonDetails = {
-            buttonText: event.target.innerText,
-            buttonId: event.target.id,
+            buttonText: target.innerText || 'Image',
+            buttonId: target.id || target.closest('button').id,  // Handle img inside button
         };
         chrome.runtime.sendMessage({ type: 'BUTTON_CLICKED', details: buttonDetails });
     }

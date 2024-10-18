@@ -13,7 +13,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["static/js/*", "static/css/*"],
+      "resources": ["static/js/*", "static/css/*", "/media/*"],
       "matches": ["<all_urls>"]
     }
   ],

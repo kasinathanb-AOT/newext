@@ -8,9 +8,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs.length > 0) {
-        console.log("Active tab:", tabs[0]);
-    } else {
-        console.log("No active tabs found.");
-    }
+    console.log("Active tab:", tabs[0]);
 });

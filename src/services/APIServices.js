@@ -1,11 +1,30 @@
-import axios from "axios";
+export const fetchTodo = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+};
 
-export const GetAPIRes = async () => {
+export const createUser = async (name) => {
     try {
-        const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
-        return data; // Only returning data here, no need to return the entire response object
+        const response = await fetch("https://reqres.in/api/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
     } catch (error) {
-        console.error("Error fetching the API:", error);
-        throw error; // Rethrow the error so it can be caught by the caller
+        console.error("Error creating user:", error);
+        throw error;
     }
 };
