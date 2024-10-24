@@ -13,13 +13,18 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["static/js/*", "static/css/*", "/media/*"],
+      "resources": [
+        "static/js/main.js",
+        "static/css/main.css",
+        "media/logo512.png"
+      ],
       "matches": ["<all_urls>"]
     }
   ],
+  "host_permissions": ["https://oscaremr.quipohealth.com/oscar/*"],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://oscaremr.quipohealth.com/oscar/*"],
       "js": ["contentScript.js"],
       "run_at": "document_end"
     }

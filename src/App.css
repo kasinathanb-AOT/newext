@@ -1,65 +1,87 @@
-body {
+* {
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
-* {
-  padding: 0px;
-  margin: 0;
+/* :root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f1c40f;
+  --text-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --muted-color: #95a5a6;
+  --highlight-color: #9b59b6;
+  --link-color: #2980b9;
+  --success-color: #27ae60;
+  --warning-color: #e67e22;
+  --error-color: #c0392b;
+  --info-color: #16a085;
+  --border-color: #bdc3c7;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --card-background-color: #ecf0f1;
+  --button-hover-color: #34495e;
+  --header-background-color: #1abc9c;
+} */
+
+
+:root {
+  --primary-color: #66A8CF;
+  --secondary-color: #C38EB4;
+  --text-color: #232F47;
+  --background-color: #E1CBD7;
+  --button-hover-color: #5B97B5;
 }
 
-/* scrollbar.css */
-
-/* Apply to any container that requires a custom scrollbar */
 .custom-scrollbar {
   overflow-y: auto;
-  /* Ensure scrollable content */
 }
 
-/* For WebKit browsers (Chrome, Safari) */
 .custom-scrollbar::-webkit-scrollbar {
   display: none;
-  /* Width of the scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
   background: #f1f1f1;
-  /* Background of the scrollbar track */
   border-radius: 10px;
-  /* Rounded corners */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: lightgreen;
-  /* Color of the scrollbar thumb */
   border-radius: 10px;
-  /* Rounded corners */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #26425A;
-  /* Darker color when hovering */
 }
 
-/* For Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
-  /* Makes scrollbar thin */
   scrollbar-color: #66A8CF #f1f1f1;
-  /* Thumb color and track color */
+}
+
+.initButton {
+  position: fixed;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  bottom: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .react-ext-container {
   animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-  /* Smoother easing */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 12px;
-  /* Slightly larger radius for a modern feel */
   bottom: -100%;
-  /* Start completely hidden */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  /* Softer shadow */
   display: flex;
   flex-direction: column;
   height: 60vh;
@@ -69,68 +91,25 @@ body {
   width: 40vw;
   z-index: 1000000;
   transform: scale(0.95);
-  /* Start slightly scaled down */
   opacity: 0;
-  /* Start invisible */
 }
 
 @keyframes slideUp {
   0% {
     bottom: -50%;
     transform: scale(0.95);
-    /* Slightly smaller scale for a smooth transition */
     opacity: 0;
   }
 
   60% {
     bottom: 3%;
     transform: scale(1.02);
-    /* Slight overshoot for a natural effect */
     opacity: 1;
   }
 
   100% {
     bottom: 2%;
     transform: scale(1);
-    /* Return to normal size */
     opacity: 1;
   }
-}
-
-.initButton {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  flex-grow: 1;
-}
-
-.success {
-  color: green;
-}
-
-/* Styling for inputs */
-.myextInput {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: white;
-  flex-grow: 1;
-  width: 100%;
-}
-
-/* Button styling */
-.myextBtn {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  flex-grow: 1;
 }
